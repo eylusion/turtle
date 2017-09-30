@@ -1,0 +1,26 @@
+function refuel()
+  if turtle.place()
+   or turtle.placeUp()
+   or turtle.placeDown() then
+    print("Found Fuel at " .. turtle.getFuelLevel() .. ". Refuelling")
+    turtle.refuel()
+    print("Current Fuel level at " .. turtle.getFuelLevel())
+  end
+end
+
+for i=1, 20, 1 do
+  refuel()
+  if turtle.detect() then
+    while turtle.detect() do
+     turtle.dig()
+    end
+   end
+  if turtle.detectDown() then
+    turtle.digDown()
+   end
+  if turtle.detectUp() then
+    turtle.digUp()
+    turtle.back()
+   end
+ turtle.forward()
+end
